@@ -1,0 +1,8 @@
+.project-sect {
+    display: block;
+    width: 500px;
+    height: 500px;
+    padding: 25px;
+    align-items: center;
+    margin: auto;
+}
