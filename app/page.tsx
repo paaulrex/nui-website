@@ -6,6 +6,7 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { AboutMeIcon, GithubIcon, LinkedInIcon } from "@/components/icons";
+import { Divider } from "@nextui-org/divider";
 
 export default function Home() {
   return (
@@ -14,9 +15,11 @@ export default function Home() {
         <span className={title()}>Hi I'm&nbsp;</span>
         <span className={title({ color: "cyan" })}>Paul&nbsp;</span>
         <br />
+        <Divider className="mb-4 mt-8" />
         <div className={subtitle({ class: "mt-4" })}>
           Software Engineer | Front-End Dev | Air Force Veteran
         </div>
+        <Divider className="my-4" />
       </div>
 
       <div className="flex gap-3">
@@ -44,7 +47,7 @@ export default function Home() {
             LinkedIn
           </Link>
       </div>
-      
+
     </section>
   );
 }
