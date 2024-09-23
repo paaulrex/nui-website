@@ -1,3 +1,7 @@
+# PDS Portfolio
+
+The following below are readme.md from NextUI's app package that I am using to build my own portfolio website.
+
 # Next.js & NextUI Template
 
 This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
