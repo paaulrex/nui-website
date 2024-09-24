@@ -8,6 +8,25 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import { JetBrains_Mono, Pixelify_Sans, Roboto } from "next/font/google";
+
+const pixel_init = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-pixelify",
+})
+
+const jbmono_init = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["100", "300", "500", "700"],
+  variable: "--font-jbmono",
+})
+
+const roboto_init = Roboto ({
+  subsets: ["latin"],
+  weight: ["100", "300", "500", "700"],
+  variable: "--font-roboto"
+})
 
 export const metadata: Metadata = {
   title: {
@@ -38,10 +57,13 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body
-        className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
+        className={` 
+          // list of fonts
+          ${pixel_init.variable} 
+          ${roboto_init.variable}
+          ${jbmono_init.variable} 
+          ${clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable,
+        )}`}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
