@@ -6,7 +6,7 @@ import generatePassword from "./pg.js"
 import { Slider } from "@nextui-org/slider"
 import { Checkbox } from "@nextui-org/checkbox";
 import { Divider } from "@nextui-org/divider"
-import { use, useState } from "react";
+import { useState } from "react";
 import { Snippet } from "@nextui-org/snippet";
 
 export default function ProjectsPage() {
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
     const [passTwo, setPassTwo] = useState("")
     return (
         <div className="roboto">
-            <div className="title-container flex flex-col p-5">
+            <div className="title-container flex flex-col p-5 text-left">
                 <p className="pixelify m-0 p-0 text-5xl font-bold">Just another</p>
                 <p className="pixelify m-0 p-0 text-4xl font-bold bg-gradient-to-r from-cyan-500 via-purple-500 to-red-600 bg-clip-text text-transparent">password generator</p>
             </div>
