@@ -9,3 +9,7 @@
 .roboto {
     font-family: var(--font-roboto);
 }
+
+.jbmono {
+    font-family: var(--font-jbmono);
+}
