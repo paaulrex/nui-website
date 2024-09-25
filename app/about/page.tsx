@@ -37,13 +37,6 @@ export default function AboutPage() {
 
       <div className="flex gap-3">
         <Link
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href="/about/">
-            <AboutMeIcon size={20} />
-            About Me
-          </Link>
-
-        <Link
           isExternal
           className={buttonStyles({ variant: "bordered", radius: "full" })}
           href={siteConfig.links.github}
