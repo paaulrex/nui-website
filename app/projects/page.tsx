@@ -1,8 +1,11 @@
+'use client'
 import { title } from "@/components/primitives";
 import { Divider } from "@nextui-org/divider";
-import { Card, CardFooter } from "@nextui-org/card";
-import { Image } from "@nextui-org/image";
+import { Card, CardBody } from "@nextui-org/card";
+import Image from "next/image";
 import Link from "next/link";
+import pw from "../../components/images/pg.png"
+import { Button } from "@nextui-org/button";
 
 export default function ProjectsPage(){
     return (
@@ -13,25 +16,28 @@ export default function ProjectsPage(){
             
             <Divider className="my-5" />
             <div>
-                <Link href="/projects/password-generator">
-                <Card
-                    isFooterBlurred
-                    radius="lg"
-                    className="border-none"
-                >
-                    <Image
-                        alt="Password Generator"
-                        className="object-cover"
-                        height={400}
-                        src="etc"
-                        width={400}
-                    />
-                    <CardFooter
-                        className="justify-center absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] mx-1 z-10">
-                                <p className="text-tiny text-white/80 jbmono">Password Generator</p>
-                    </CardFooter>
-                </Card>
-                </Link>
+                <Button className="h-auto" variant="ghost">
+                    <Link href="/projects/password-generator">
+                        <Card
+                            isBlurred
+                            radius="lg"
+                        >
+                            <Image
+                                alt="Password Generator Picture"
+                                className="object-cover"
+                                height={400}
+                                src={pw}
+                                width={400}
+                            />
+                            <CardBody
+                                className="justify-center items-center bg-white/80 before:bg-black/10 border-black/20 border-1 overflow-hidden absolute before:rounded-xl rounded-large bottom-1/2 w-3/4 mx-12 z-10 p-auto">
+                                <p className="text-md font-bold text-black/80 jbmono text-center">Password Generator</p>
+                            </CardBody>
+                        </Card>
+                    </Link>
+                </Button>
+
+                <Divider className="my-5" />
             </div>
         </div>
     )
