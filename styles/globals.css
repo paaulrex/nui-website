@@ -13,3 +13,8 @@
 .jbmono {
     font-family: var(--font-jbmono);
 }
+
+.pr-btn:hover .pr-img {
+    opacity: 1;
+    filter: blur(4px);
+}
