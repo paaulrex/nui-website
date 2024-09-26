@@ -16,28 +16,31 @@ export default function ProjectsPage(){
             
             <Divider className="my-5" />
             <div>
-                <Button className="h-auto" variant="ghost">
+                <Button className="h-auto pr-btn" variant="ghost">
                     <Link href="/projects/password-generator">
                         <Card
                             isBlurred
                             radius="lg"
+                            className="pr-card"
                         >
                             <Image
                                 alt="Password Generator Picture"
-                                className="object-cover"
+                                className="object-cover pr-img"
                                 height={400}
                                 src={pw}
                                 width={400}
                             />
                             <CardBody
                                 className="justify-center items-center bg-white/80 before:bg-black/10 border-black/20 border-1 overflow-hidden absolute before:rounded-xl rounded-large bottom-1/2 w-3/4 mx-12 z-10 p-auto">
-                                <p className="text-md font-bold text-black/80 jbmono text-center">Password Generator</p>
+                                <p className="text-md font-bold text-black/80 jbmono text-center pr-msg">Password Generator</p>
                             </CardBody>
                         </Card>
                     </Link>
                 </Button>
 
                 <Divider className="my-5" />
+
+                <p className="italic text-sm">More project on the waaaay!</p>
             </div>
         </div>
     )
