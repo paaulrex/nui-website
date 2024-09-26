@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 roboto">
       <div className="inline-block max-w-xl text-center justify-center">
-        <span className={`${title()} jbmono`}>Hi, I'm&nbsp;</span>
+        <span className={`${title()} jbmono`}>Hi, I&apos;m&nbsp;</span>
         <span className={`${title({ color: "cyan" })} jbmono`}>Paul!&nbsp;</span>
         <br />
         <Divider className="mb-4 mt-8" />
@@ -23,7 +23,7 @@ export default function AboutPage() {
           a lot since then about HTML:5, CSS and other CSS libraries, and JavaScript.
           <Tooltip 
             showArrow 
-            content="If you don't see those in my GitHub, it's most likely a secret project..."
+            content="If you don&apos;t see those in my GitHub, it&apos;s most likely a secret project..."
             placement="bottom"
             color="primary"
             offset={-20}>
