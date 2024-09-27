@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 roboto">
       <div className="inline-block max-w-xl text-center justify-center">
-        <span className={`${title()} jbmono`}>Hi, I'm&nbsp;</span>
+        <span className={`${title()} jbmono`}>Hi, I&apos;m&nbsp;</span>
         <span className={`${title({ color: "cyan" })} jbmono`}>Paul!&nbsp;</span>
         <br />
         <Divider className="mb-4 mt-8" />

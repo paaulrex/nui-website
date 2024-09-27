@@ -1,3 +1,4 @@
+'use client'
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -11,7 +12,7 @@ import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
+import { link as linkStyles, toggle } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
@@ -25,6 +26,7 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import React from "react";
 
 export const Navbar = () => {
   const searchInput = (
@@ -48,8 +50,10 @@ export const Navbar = () => {
     />
   );
 
+  const [isMenuOpen, setIsMenuOpen] = React.useReducer((current) => !current, false)
+
   return (
-    <NextUINavbar maxWidth="xl" position="sticky" className="roboto font-light">
+    <NextUINavbar maxWidth="xl" position="sticky" className="roboto font-light" isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-10" href="/">
@@ -110,29 +114,32 @@ export const Navbar = () => {
 
       </NavbarContent>
 
-      {/* <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+
+        {/* <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
         </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent> */}
+        
+        <ThemeSwitch /> */}
 
-      <NavbarMenu>
-        {searchInput}
+
+        <NavbarMenuToggle />
+      </NavbarContent>
+
+      <NavbarMenu
+        >
+
+        {/* {searchInput} */}
+
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
+                className="w-full"
+                color="foreground"
+                href={item.href}
                 size="lg"
+                onPress={() => setIsMenuOpen()}
               >
                 {item.label}
               </Link>
@@ -140,6 +147,7 @@ export const Navbar = () => {
           ))}
         </div>
       </NavbarMenu>
+
     </NextUINavbar>
   );
 };
