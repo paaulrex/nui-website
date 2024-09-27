@@ -1,3 +1,4 @@
+'use client'
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -11,7 +12,7 @@ import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
+import { link as linkStyles, toggle } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 
@@ -25,6 +26,7 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import React from "react";
 
 export const Navbar = () => {
   const searchInput = (
@@ -48,8 +50,10 @@ export const Navbar = () => {
     />
   );
 
+  const [isMenuOpen, setIsMenuOpen] = React.useReducer((current) => !current, false)
+
   return (
-    <NextUINavbar maxWidth="xl" position="sticky" className="roboto font-light">
+    <NextUINavbar maxWidth="xl" position="sticky" className="roboto font-light" isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-10" href="/">
@@ -122,7 +126,7 @@ export const Navbar = () => {
         <NavbarMenuToggle />
       </NavbarContent>
 
-      <NavbarMenu 
+      <NavbarMenu
         >
 
         {/* {searchInput} */}
@@ -131,9 +135,11 @@ export const Navbar = () => {
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
+                className="w-full"
                 color="foreground"
-                href={`${item.href}`}
+                href={item.href}
                 size="lg"
+                onPress={() => setIsMenuOpen()}
               >
                 {item.label}
               </Link>
@@ -141,6 +147,7 @@ export const Navbar = () => {
           ))}
         </div>
       </NavbarMenu>
+
     </NextUINavbar>
   );
 };
