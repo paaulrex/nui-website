@@ -17,7 +17,7 @@ export default function ProjectsPage(){
             <Divider className="my-5" />
             <div>
                 <Button className="h-auto pr-btn" variant="ghost">
-                    <Link href="/projects/password-generator">
+                    <Link href="projects/password-generator">
                         <Card
                             isBlurred
                             radius="lg"
