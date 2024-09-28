@@ -9,7 +9,7 @@ import { Divider } from "@nextui-org/divider"
 import { useState } from "react";
 import { Snippet } from "@nextui-org/snippet";
 
-export default function ProjectsPage() {
+export default function PasswordGeneratorPage() {
     const [value, setValue] = useState(18);
     const [isNumberChecked, numberSelected] = useState(false);
     const [isSymbolChecked, symbolSelected] = useState(false);
