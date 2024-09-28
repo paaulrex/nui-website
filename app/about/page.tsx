@@ -23,12 +23,14 @@ export default function AboutPage() {
           a lot since then about HTML:5, CSS and other CSS libraries, and JavaScript.
           <Tooltip 
             showArrow 
-            content="If you don&apos;t see those in my GitHub, it&apos;s most likely a secret project..."
+            content="I am currently working on multiple projects, it might take a while to update this page."
             placement="bottom"
             color="primary"
             offset={-20}>
-            <p className="py-4">I am currently working on projects using C++, C#, Python, & Java. I am also working on
-            projects using frameworks such as NextUI, and React.</p>
+            <p className="py-4">I am currently redoing this portfolio using TypeScript, React, and NextUI (NextJS).
+              Also, I am continuing my learning in ML/AI, and expanding my programming languages (learning
+              C++, C#, & Java).
+            </p>
           </Tooltip>
           If you would like to see more of my programming, please visit my links below!
         </div>
