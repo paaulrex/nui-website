@@ -4,7 +4,7 @@ export default function TodoListLayout({
     children: React.ReactNode;
   }) {
     return (
-      <section className="project-sect">
+      <section className="">
           {children}
       </section>
     );
