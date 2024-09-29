@@ -1,7 +1,7 @@
 export default function AnimeListPage() {
-    return (
-        <section>
+  return (
+    <section>
 
-        </section>
-    )
+    </section>
+  )
 }
