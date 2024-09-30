@@ -2,12 +2,10 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
-require("dotenv").config();
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
+  apiKey: "AIzaSyDId7OJbrmowrLY08oYW3GBl8kbeOznh_I",
   authDomain: "new-list-project-19eff.firebaseapp.com",
   databaseURL: "https://new-list-project-19eff-default-rtdb.firebaseio.com",
   projectId: "new-list-project-19eff",
