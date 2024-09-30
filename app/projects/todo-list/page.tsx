@@ -13,7 +13,7 @@ import animePic from "@/components/images/list-anime.png"
 import tvPic from "@/components/images/list-tv.png"
 import moviePic from "@/components/images/list-movies.png"
 import vGamesPics from "@/components/images/list-vg.png"
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 
 export default function TodoListPage() {
