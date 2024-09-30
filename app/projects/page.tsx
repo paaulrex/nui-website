@@ -37,6 +37,28 @@ export default function ProjectsPage(){
           </Link>
         </Button>
         <Divider className="my-5" />
+        <Button className="h-auto pr-btn" variant="ghost">
+          <Link href="projects/todo-list">
+            <Card
+              isBlurred
+              radius="lg"
+              className="pr-card"
+            >
+            <Image
+              alt="To-do List Pciture"
+              className="object-cover pr-img"
+              height={400}
+              src={pw}
+              width={400}
+            />
+              <CardBody
+                className="justify-center items-center bg-white/80 before:bg-black/10 border-black/20 border-1 overflow-hidden absolute before:rounded-xl rounded-large bottom-1/2 w-3/4 mx-12 z-10 p-auto">
+                <p className="text-md font-bold text-black/80 jbmono text-center pr-msg">Todo List</p>
+              </CardBody>
+            </Card>
+          </Link>
+        </Button>
+        <Divider className="my-5"/>
         <p className="italic text-sm">More projects are on the way, requires a little rework.</p>
       </div>
     </div>
