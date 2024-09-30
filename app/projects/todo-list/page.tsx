@@ -158,7 +158,7 @@ export default function TodoListPage() {
     <div className="gap-5 grid grid-cols-2 sm:grid-cols-2 p-5">
       {list.map((item, index) => (
         <div>
-          <Card key={index} isPressable>
+          <Card key={`${index}`} isPressable>
             <CardBody className="overflow-visible">
               <Image
                 width={100}
