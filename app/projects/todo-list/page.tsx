@@ -14,6 +14,7 @@ import tvPic from "@/components/images/list-tv.png"
 import moviePic from "@/components/images/list-movies.png"
 import vGamesPics from "@/components/images/list-vg.png"
 import { use, useEffect, useState } from "react";
+import React from "react";
 
 export default function TodoListPage() {
   const [animeName, setAnimeName] = useState("")
@@ -61,15 +62,13 @@ export default function TodoListPage() {
           videogame_name: vgName
         })
       }
-
-      alert("Item has been added to your list")
-      window.location.reload()
+      
 
     } catch (error) {
       console.error("Firebase Error", error)
     }
   }
-
+  
   // Get Anime List
   useEffect(() => {
     const getAnimeList = async () => {
@@ -121,6 +120,14 @@ export default function TodoListPage() {
     }
     getVgList()
   }, [])
+
+  // const deleteItem = async () => {
+  //   try {
+  //     if (animeName) {
+
+  //     }
+  //   }
+  // }
 
   const list =[
     {
@@ -174,7 +181,11 @@ export default function TodoListPage() {
       <Card className="gap-1">
         <CardHeader className="justify-center">
           <Link href="./todo-list">
-            <Button>
+            <Button
+              color="default"
+              variant="ghost"
+              radius="lg"
+              size="sm">
               Back to List
             </Button>
           </Link>
@@ -188,10 +199,11 @@ export default function TodoListPage() {
             className="rounded-full"
           />
           <Input
+            isClearable
             type="text"
             label="Anime"
             placeholder="Solo Leveling"
-            className="max-w-xs"
+            className="w-full"
             onChange={(e) => setAnimeName(e.target.value)}
           />
         </CardBody>
@@ -207,7 +219,9 @@ export default function TodoListPage() {
       
       <div className="w-[400px] flex flex-wrap justify-center gap-2 p-5">
         {Object.keys(animeList).map((item) => (
-            <Button className="flex-grow">
+            <Button 
+              variant="faded"
+              className="flex-grow">
               { // @ts-ignore
               animeList[item]?.anime_name}
             </Button>
