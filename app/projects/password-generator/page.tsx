@@ -27,8 +27,8 @@ export default function PasswordGeneratorPage() {
           className="roboto"
           color="primary"
           onPress={() => {const password = generatePassword(value, isNumberChecked, isSymbolChecked)
-              setPassOne(password[0])
-              setPassTwo(password[1])
+            setPassOne(password[0])
+            setPassTwo(password[1])
           }}>
             Generate Password
         </Button>
