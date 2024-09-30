@@ -37,7 +37,7 @@ export default function ProjectsPage(){
           </Link>
         </Button>
         <Divider className="my-5" />
-        <p className="italic text-sm">More project on the waaaay!</p>
+        <p className="italic text-sm">More projects are on the way, requires a little rework.</p>
       </div>
     </div>
     )
