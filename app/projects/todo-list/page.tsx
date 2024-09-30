@@ -220,6 +220,7 @@ export default function TodoListPage() {
       <div className="w-[400px] flex flex-wrap justify-center gap-2 p-5">
         {Object.keys(animeList).map((item) => (
             <Button 
+              key={item}
               variant="faded"
               className="flex-grow">
               { // @ts-ignore
