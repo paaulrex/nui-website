@@ -10,6 +10,7 @@
 		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
 	},
 	"dependencies": {
+		"@aws-sdk/client-secrets-manager": "^3.658.1",
 		"@nextui-org/avatar": "^2.0.33",
 		"@nextui-org/button": "2.0.38",
 		"@nextui-org/card": "^2.0.34",
@@ -30,6 +31,7 @@
 		"@nextui-org/tooltip": "^2.0.41",
 		"@react-aria/ssr": "3.9.4",
 		"@react-aria/visually-hidden": "3.8.12",
+		"aws-sdk": "^2.1691.0",
 		"clsx": "2.1.1",
 		"firebase": "^10.13.2",
 		"framer-motion": "~11.1.1",
