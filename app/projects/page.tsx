@@ -16,7 +16,7 @@ export default function ProjectsPage(){
       </div>
       <Divider className="my-5" />
       <div>
-        <Button className="h-auto pr-btn" variant="ghost">
+        <Button className="h-auto" variant="ghost">
           <Link href="projects/password-generator">
             <Card
               isBlurred
@@ -40,7 +40,7 @@ export default function ProjectsPage(){
 
         <Divider className="my-5" />
 
-        <Button className="h-auto pr-btn" variant="ghost">
+        <Button className="h-auto" variant="ghost">
           <Link href="projects/todo-list">
             <Card
               isBlurred
