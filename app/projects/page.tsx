@@ -4,7 +4,8 @@ import { Divider } from "@nextui-org/divider";
 import { Card, CardBody } from "@nextui-org/card";
 import Image from "next/image";
 import Link from "next/link";
-import pw from "../../components/images/pg.png"
+import passGenPic from "../../components/images/pg.png"
+import toDoListPic from "../../components/images/tdl.png"
 import { Button } from "@nextui-org/button";
 
 export default function ProjectsPage(){
@@ -26,7 +27,7 @@ export default function ProjectsPage(){
               alt="Password Generator Picture"
               className="object-cover pr-img"
               height={400}
-              src={pw}
+              src={passGenPic}
               width={400}
             />
               <CardBody
@@ -36,7 +37,9 @@ export default function ProjectsPage(){
             </Card>
           </Link>
         </Button>
+
         <Divider className="my-5" />
+
         <Button className="h-auto pr-btn" variant="ghost">
           <Link href="projects/todo-list">
             <Card
@@ -48,7 +51,7 @@ export default function ProjectsPage(){
               alt="To-do List Pciture"
               className="object-cover pr-img"
               height={400}
-              src={pw}
+              src={toDoListPic}
               width={400}
             />
               <CardBody
