@@ -29,8 +29,7 @@ export default function AboutPage() {
             offset={-20}>
             <p className="py-4">I am currently redoing this portfolio using TypeScript, React, and NextUI (NextJS).
               Also, I am continuing my learning in ML/AI, and expanding my programming languages (learning
-              C++, C#, & Java).
-            </p>
+              C++, C#, & Java).</p>
           </Tooltip>
           If you would like to see more of my programming, please visit my links below!
         </div>
