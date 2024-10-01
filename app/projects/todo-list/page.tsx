@@ -30,46 +30,54 @@ export default function TodoListPage() {
   const [vgList, setVgList] = useState({});
 
   // Add Item into list
-  const addToList = async () => {
+  const addAnime = async () => {
     try {
-      if (animeName) {
-        const animeRef = ref(db, "anime")
-        const newAnimeData = push(animeRef)
-        await set(newAnimeData, {
-          anime_name: animeName
-        })
-      }
+      const animeRef = ref(db, "anime")
+      const newAnimeData = push(animeRef)
+      await set(newAnimeData, {
+        anime_name: animeName
+      })
+  } catch (error) {
+      console.error("Firebase Error", error)
+    }
+  };
 
-      if (tvName) {
-        const tvRef = ref(db, "tv-show")
-        const newTvData = push(tvRef)
-        await set(newTvData, {
-          tvshow_name: tvName
-        })
-      }
-
-      if (movieName) {
-        const movieRef = ref(db, "movies")
-        const newMovieData = push(movieRef)
-        await set(newMovieData, {
-          movie_name: movieName
-        })
-      }
-
-      if (vgName) {
-        const vgRef = ref(db, "video-games")
-        const newVgData = push(vgRef)
-        await set(newVgData, {
-          videogame_name: vgName
-        })
-      }
-      
-
+  const addTv = async () => {
+    try {
+      const tvRef = ref(db, "tv-show")
+      const newTvData = push(tvRef)
+      await set(newTvData, {
+        tvshow_name: tvName
+      })
     } catch (error) {
       console.error("Firebase Error", error)
     }
   };
+
+  const addMovie = async () => {
+    try {
+      const movieRef = ref(db, "movies")
+      const newMovieData = push(movieRef)
+      await set(newMovieData, {
+        movie_name: movieName
+      })
+    } catch (error) {
+      console.error("Firebase Error", error)
+    }
+  }
   
+  const addVg = async () => {
+    try {
+      const vgRef = ref(db, "video-games")
+      const newVgData = push(vgRef)
+      await set(newVgData, {
+        videogame_name: vgName
+      })
+    } catch (error) {
+      console.error("Firebase Error", error)
+    }
+  }
+
   // Get Anime List
   useEffect(() => {
     const getAnimeList = async () => {
@@ -219,7 +227,7 @@ export default function TodoListPage() {
           <Button 
             
             className="w-full"
-            onPress={() => addToList()}
+            onPress={() => addAnime()}
           >
             Add to List</Button>
         </CardFooter>
@@ -272,7 +280,7 @@ export default function TodoListPage() {
           <Button 
             
             className="w-full"
-            onPress={() => addToList()}
+            onPress={() => addTv()}
           >
             Add to List</Button>
         </CardFooter>
@@ -325,7 +333,7 @@ export default function TodoListPage() {
           <Button 
             
             className="w-full"
-            onPress={() => addToList()}
+            onPress={() => addMovie()}
           >
             Add to List</Button>
         </CardFooter>
@@ -378,7 +386,7 @@ export default function TodoListPage() {
           <Button 
             
             className="w-full"
-            onPress={() => addToList()}
+            onPress={() => addVg()}
           >
             Add to List</Button>
         </CardFooter>
