@@ -4,7 +4,8 @@ import { title } from "@/components/primitives";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { onValue, push, ref, remove, set  } from "firebase/database";
+import { child, onValue, push, ref, remove, set  } from "firebase/database";
+import { getDocs } from "firebase/firestore";
 import db from "./firebaseConfig.js";
 import Link from "next/link";
 
@@ -14,6 +15,7 @@ import tvPic from "@/components/images/list-tv.png";
 import moviePic from "@/components/images/list-movies.png";
 import vGamesPics from "@/components/images/list-vg.png";
 import { useEffect, useState } from "react";
+import { rm } from "fs";
 
 export default function TodoListPage() {
   // Todo List (Adding/Removing/Etc) code:
@@ -32,11 +34,14 @@ export default function TodoListPage() {
   // Add Item into list
   const addAnime = async () => {
     try {
+      if (animeName.length > 0) {
       const animeRef = ref(db, "anime")
       const newAnimeData = push(animeRef)
       await set(newAnimeData, {
         anime_name: animeName
-      })
+      })} else {
+        alert("You've entered nothing, try again!")
+      }
   } catch (error) {
       console.error("Firebase Error", error)
     }
@@ -44,11 +49,14 @@ export default function TodoListPage() {
 
   const addTv = async () => {
     try {
+      if (tvName.length > 0) {
       const tvRef = ref(db, "tv-show")
       const newTvData = push(tvRef)
       await set(newTvData, {
         tvshow_name: tvName
-      })
+      })} else {
+        alert("You've entered nothing, try again!")
+      }
     } catch (error) {
       console.error("Firebase Error", error)
     }
@@ -56,11 +64,14 @@ export default function TodoListPage() {
 
   const addMovie = async () => {
     try {
+      if (movieName.length > 0) {
       const movieRef = ref(db, "movies")
       const newMovieData = push(movieRef)
       await set(newMovieData, {
         movie_name: movieName
-      })
+      })} else {
+        alert("You've entered nothing, try again!")
+      }
     } catch (error) {
       console.error("Firebase Error", error)
     }
@@ -68,11 +79,14 @@ export default function TodoListPage() {
   
   const addVg = async () => {
     try {
+      if (vgName.length > 0) {
       const vgRef = ref(db, "video-games")
       const newVgData = push(vgRef)
       await set(newVgData, {
         videogame_name: vgName
-      })
+      })} else {
+        alert("You've entered nothing, try again!")
+      }
     } catch (error) {
       console.error("Firebase Error", error)
     }
@@ -130,8 +144,7 @@ export default function TodoListPage() {
     getVgList()
   }, []);
 
-  // Delete Item from List
-
+  // List items for example connected to Firebase DB
   const list =[
     {
         title: "Anime",
@@ -221,11 +234,12 @@ export default function TodoListPage() {
             placeholder="Solo Leveling"
             className="w-full"
             onChange={(e) => setAnimeName(e.target.value)}
+            value={animeName}
+            onClear={() => setAnimeName("")}
           />
         </CardBody>
         <CardFooter className="justify-center">
           <Button 
-            
             className="w-full"
             onPress={() => addAnime()}
           >
@@ -233,9 +247,11 @@ export default function TodoListPage() {
         </CardFooter>
       </Card>
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
-        {Object.keys(animeList).map((item) => (
+        {Object.keys(animeList).map((item, index) => (
           <Button 
-            key={item}
+            // Below is clearing items after doubleclick
+            onDoubleClick={() => remove(ref(db, "anime/"+item))}
+            key={index}
             variant="faded"
             className="flex-grow">
             { // @ts-ignore
@@ -274,6 +290,8 @@ export default function TodoListPage() {
             placeholder="Bones"
             className="w-full"
             onChange={(e) => setTvName(e.target.value)}
+            value={tvName}
+            onClear={() => setTvName("")}
           />
         </CardBody>
         <CardFooter className="justify-center">
@@ -288,6 +306,7 @@ export default function TodoListPage() {
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
         {Object.keys(tvShowList).map((item) => (
           <Button 
+            onDoubleClick={() => remove(ref(db, "tv-show/"+item))}
             key={item}
             variant="faded"
             className="flex-grow">
@@ -327,6 +346,8 @@ export default function TodoListPage() {
             placeholder="Inception"
             className="w-full"
             onChange={(e) => setMovieName(e.target.value)}
+            value={movieName}
+            onClear={() => setMovieName("")}
           />
         </CardBody>
         <CardFooter className="justify-center">
@@ -341,6 +362,7 @@ export default function TodoListPage() {
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
         {Object.keys(movieList).map((item) => (
           <Button 
+            onDoubleClick={() => remove(ref(db, "movies/"+item))}
             key={item}
             variant="faded"
             className="flex-grow">
@@ -380,6 +402,8 @@ export default function TodoListPage() {
             placeholder="Call of Duty"
             className="w-full"
             onChange={(e) => setVgName(e.target.value)}
+            value={vgName}
+            onClear={() => setVgName("")}
           />
         </CardBody>
         <CardFooter className="justify-center">
@@ -394,6 +418,7 @@ export default function TodoListPage() {
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
         {Object.keys(vgList).map((item) => (
           <Button 
+            onDoubleClick={() => remove(ref(db, "video-games/"+item))}
             key={item}
             variant="faded"
             className="flex-grow"> 
