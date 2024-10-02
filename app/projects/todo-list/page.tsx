@@ -1,12 +1,14 @@
 "use client"
 
+import React from "react";
 import { title } from "@/components/primitives";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { onValue, push, ref, remove, set  } from "firebase/database";
 import db from "./firebaseConfig.js";
-
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/modal"
+import { useDisclosure } from "@nextui-org/react"
 import Image from "next/image";
 import animePic from "@/components/images/list-anime.png";
 import tvPic from "@/components/images/list-tv.png";
@@ -27,6 +29,9 @@ export default function TodoListPage() {
 
   const [vgName, setVgName] = useState("");
   const [vgList, setVgList] = useState({});
+
+  // Modal
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   // Add Item into list
   const addAnime = async () => {
@@ -232,12 +237,43 @@ export default function TodoListPage() {
             onClear={() => setAnimeName("")}
           />
         </CardBody>
-        <CardFooter className="justify-center">
+        <CardFooter className="justify-center flex flex-col gap-3">
           <Button 
             className="w-full"
             onPress={() => {addAnime(); setAnimeName("")}}
           >
             Add to List</Button>
+          <Button onPress={onOpen} className="text-xs italic" variant="light">Some explanation or guide or whatever</Button>
+          <Modal 
+            isOpen={isOpen}
+            // @ts-ignore
+            placement={"auto"}
+            onOpenChange={onOpenChange}
+            className="p-5"
+            >
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader>So you need some hints...</ModalHeader>
+                  <ModalBody className="text-sm">
+                    <p>
+                      <b>Double Clicking</b> the items below will delete the item.
+                    </p>
+                    <p>
+                      You are free to add or delete whatever you like. But please be kind in inputting items,
+                      and only add items that belongs to that category.
+                    </p>
+                    <p>
+                      Thank you!
+                    </p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onPress={onClose}>Close</Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
         </CardFooter>
       </Card>
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
@@ -288,13 +324,44 @@ export default function TodoListPage() {
             onClear={() => setTvName("")}
           />
         </CardBody>
-        <CardFooter className="justify-center">
+        <CardFooter className="justify-center flex flex-col gap-3">
           <Button 
             
             className="w-full"
             onPress={() => {addTv(); setTvName("")}}
           >
             Add to List</Button>
+          <Button onPress={onOpen} className="text-xs italic" variant="light">Some explanation or guide or whatever</Button>
+          <Modal 
+            isOpen={isOpen}
+            // @ts-ignore
+            placement={"auto"}
+            onOpenChange={onOpenChange}
+            className="p-5"
+            >
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader>So you need some hints...</ModalHeader>
+                  <ModalBody className="text-sm">
+                    <p>
+                      <b>Double Clicking</b> the items below will delete the item.
+                    </p>
+                    <p>
+                      You are free to add or delete whatever you like. But please be kind in inputting items,
+                      and only add items that belongs to that category.
+                    </p>
+                    <p>
+                      Thank you!
+                    </p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onPress={onClose}>Close</Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
         </CardFooter>
       </Card>
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
@@ -344,12 +411,43 @@ export default function TodoListPage() {
             onClear={() => setMovieName("")}
           />
         </CardBody>
-        <CardFooter className="justify-center">
+        <CardFooter className="justify-center flex flex-col gap-3">
           <Button 
             className="w-full"
             onPress={() => {addMovie(); setMovieName("")}}
           >
             Add to List</Button>
+          <Button onPress={onOpen} className="text-xs italic" variant="light">Some explanation or guide or whatever</Button>
+          <Modal 
+            isOpen={isOpen}
+            // @ts-ignore
+            placement={"auto"}
+            onOpenChange={onOpenChange}
+            className="p-5"
+            >
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader>So you need some hints...</ModalHeader>
+                  <ModalBody className="text-sm">
+                    <p>
+                      <b>Double Clicking</b> the items below will delete the item.
+                    </p>
+                    <p>
+                      You are free to add or delete whatever you like. But please be kind in inputting items,
+                      and only add items that belongs to that category.
+                    </p>
+                    <p>
+                      Thank you!
+                    </p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onPress={onClose}>Close</Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
         </CardFooter>
       </Card>
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
@@ -399,12 +497,43 @@ export default function TodoListPage() {
             onClear={() => setVgName("")}
           />
         </CardBody>
-        <CardFooter className="justify-center">
+        <CardFooter className="justify-center flex flex-col gap-3">
           <Button 
             className="w-full"
             onPress={() => {addVg(); setVgName("")}}
           >
             Add to List</Button>
+          <Button onPress={onOpen} className="text-xs italic" variant="light">Some explanation or guide or whatever</Button>
+          <Modal 
+            isOpen={isOpen}
+            // @ts-ignore
+            placement={"auto"}
+            onOpenChange={onOpenChange}
+            className="p-5"
+            >
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader>So you need some hints...</ModalHeader>
+                  <ModalBody className="text-sm">
+                    <p>
+                      <b>Double Clicking</b> the items below will delete the item.
+                    </p>
+                    <p>
+                      You are free to add or delete whatever you like. But please be kind in inputting items,
+                      and only add items that belongs to that category.
+                    </p>
+                    <p>
+                      Thank you!
+                    </p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onPress={onClose}>Close</Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
         </CardFooter>
       </Card>
       <div className="flex w-[400px] flex-wrap justify-center gap-2 p-5">
