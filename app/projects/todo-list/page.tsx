@@ -4,10 +4,8 @@ import { title } from "@/components/primitives";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { child, onValue, push, ref, remove, set  } from "firebase/database";
-import { getDocs } from "firebase/firestore";
+import { onValue, push, ref, remove, set  } from "firebase/database";
 import db from "./firebaseConfig.js";
-import Link from "next/link";
 
 import Image from "next/image";
 import animePic from "@/components/images/list-anime.png";
@@ -15,7 +13,6 @@ import tvPic from "@/components/images/list-tv.png";
 import moviePic from "@/components/images/list-movies.png";
 import vGamesPics from "@/components/images/list-vg.png";
 import { useEffect, useState } from "react";
-import { rm } from "fs";
 
 export default function TodoListPage() {
   // Todo List (Adding/Removing/Etc) code:
@@ -46,7 +43,6 @@ export default function TodoListPage() {
       console.error("Firebase Error", error)
     }
   };
-
   const addTv = async () => {
     try {
       if (tvName.length > 0) {
@@ -61,7 +57,6 @@ export default function TodoListPage() {
       console.error("Firebase Error", error)
     }
   };
-
   const addMovie = async () => {
     try {
       if (movieName.length > 0) {
@@ -75,8 +70,7 @@ export default function TodoListPage() {
     } catch (error) {
       console.error("Firebase Error", error)
     }
-  }
-  
+  };
   const addVg = async () => {
     try {
       if (vgName.length > 0) {
@@ -90,7 +84,7 @@ export default function TodoListPage() {
     } catch (error) {
       console.error("Firebase Error", error)
     }
-  }
+  };
 
   // Get Anime List
   useEffect(() => {
@@ -180,7 +174,7 @@ export default function TodoListPage() {
     setConTwo(id === 2);
     setConThree(id === 3);
     setConFour(id === 4);
-  }
+  };
 
   const contentZero = (
     <div className="gap-5 grid grid-cols-2 sm:grid-cols-2 p-5">
@@ -204,7 +198,7 @@ export default function TodoListPage() {
         </Card>
       ))}
     </div>
-  )
+  );
 
   const contentOne = (
     <div className="m-10">
@@ -241,7 +235,7 @@ export default function TodoListPage() {
         <CardFooter className="justify-center">
           <Button 
             className="w-full"
-            onPress={() => addAnime()}
+            onPress={() => {addAnime(); setAnimeName("")}}
           >
             Add to List</Button>
         </CardFooter>
@@ -260,7 +254,7 @@ export default function TodoListPage() {
         ))}
       </div>
     </div>
-  )
+  );
 
   const contentTwo = (
     <div className="m-10">
@@ -298,7 +292,7 @@ export default function TodoListPage() {
           <Button 
             
             className="w-full"
-            onPress={() => addTv()}
+            onPress={() => {addTv(); setTvName("")}}
           >
             Add to List</Button>
         </CardFooter>
@@ -316,7 +310,7 @@ export default function TodoListPage() {
         ))}
       </div>
     </div>
-  )
+  );
 
   const contentThree = (
     <div className="m-10">
@@ -352,9 +346,8 @@ export default function TodoListPage() {
         </CardBody>
         <CardFooter className="justify-center">
           <Button 
-            
             className="w-full"
-            onPress={() => addMovie()}
+            onPress={() => {addMovie(); setMovieName("")}}
           >
             Add to List</Button>
         </CardFooter>
@@ -372,7 +365,7 @@ export default function TodoListPage() {
         ))}
       </div>
     </div>
-  )
+  );
 
   const contentFour = (
     <div className="m-10">
@@ -408,9 +401,8 @@ export default function TodoListPage() {
         </CardBody>
         <CardFooter className="justify-center">
           <Button 
-            
             className="w-full"
-            onPress={() => addVg()}
+            onPress={() => {addVg(); setVgName("")}}
           >
             Add to List</Button>
         </CardFooter>
@@ -428,7 +420,7 @@ export default function TodoListPage() {
         ))}
       </div>
     </div>
-  )
+  );
 
   return (
   <div className="roboto  ">
