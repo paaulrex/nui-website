@@ -73,7 +73,7 @@ export default function RootLayout({
             </main>
             <footer className="w-full flex items-center justify-center py-3">
               <span className="text-default-600 text-xs">Copyright © 2024</span>
-              <p className="text-primary text-xs">&nbsp;PDS</p>
+              <p className="text-primary text-xs">&nbsp;Paul De Silos</p>
             </footer>
           </div>
         </Providers>
