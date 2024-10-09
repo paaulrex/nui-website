@@ -146,24 +146,24 @@ export default function TodoListPage() {
   // List items for example connected to Firebase DB
   const list =[
     {
-        title: "Anime",
-        img: animePic,
-        toggleItem: 1,
+      title: "Anime",
+      img: animePic,
+      toggleItem: 1,
     },
     {
-        title: "TV Shows",
-        img: tvPic,
-        toggleItem: 2,
+      title: "TV Shows",
+      img: tvPic,
+      toggleItem: 2,
     },
     {
-        title: "Movies",
-        img: moviePic,
-        toggleItem: 3,
+      title: "Movies",
+      img: moviePic,
+      toggleItem: 3,
     },
     {
-        title: "Video Games",
-        img: vGamesPics,
-        toggleItem: 4,
+      title: "Video Games",
+      img: vGamesPics,
+      toggleItem: 4,
     },
   ];
 
