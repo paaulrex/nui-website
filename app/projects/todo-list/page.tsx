@@ -173,7 +173,6 @@ export default function TodoListPage() {
   const [conTwo, setConTwo] = useState(false);
   const [conThree, setConThree] = useState(false);
   const [conFour, setConFour] = useState(false);
-
   const setCon = (id: number) => {
     setConOne(id === 1);
     setConTwo(id === 2);
@@ -403,7 +402,7 @@ export default function TodoListPage() {
           <Input
             isClearable
             type="text"
-            label="Anime"
+            label="Movie"
             placeholder="Inception"
             className="w-full"
             onChange={(e) => setMovieName(e.target.value)}
@@ -489,7 +488,7 @@ export default function TodoListPage() {
           <Input
             isClearable
             type="text"
-            label="TV Shows"
+            label="Video Games"
             placeholder="Call of Duty"
             className="w-full"
             onChange={(e) => setVgName(e.target.value)}
