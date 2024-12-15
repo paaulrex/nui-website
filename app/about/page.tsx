@@ -16,11 +16,15 @@ export default function AboutPage() {
         <br />
         <Divider className="mb-4 mt-8" />
         <div className={"text-medium text-justify"}>
+          <p>
           Hello! My name is Paul De Silos and I have been programming HTML since 2007,
           during MySpace days and then towards Tumblr era. Since then, I have stopped using
           my web design/development skills because of military service. It was not until 2023
           where I jumped back to rekindle my passion for web design/development. I have learned
-          a lot since then about HTML:5, CSS and other CSS libraries, and JavaScript.
+          a lot since then about HTML:5, CSS and other CSS libraries, and JavaScript and the 
+          different JS frameworks.
+          </p>
+          <p className="pt-4">Currently, I'm enrolled in Penn State for my Graduate degree in Software Engineering.</p>
           <Tooltip 
             showArrow 
             content="I am currently working on multiple projects, it might take a while to update this page."
