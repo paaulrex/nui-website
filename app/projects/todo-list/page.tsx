@@ -551,20 +551,20 @@ export default function TodoListPage() {
   );
 
   return (
-  <div className="roboto  ">
-    <div className="jbmono">
-      <p className="italic text-sm">Not your average</p>
-      <h1 className={title()}>{`"To-do" List`}</h1>
+    <div className="roboto  ">
+      <div className="jbmono">
+        <p className="italic text-sm">Not your average</p>
+        <h1 className={title()}>{`"To-do" List`}</h1>
+      </div>
+      
+      {conZero && <div>{contentZero}</div>}
+
+      {/* Template for list */}
+      {conOne && <div>{contentOne}</div>}
+      {conTwo && <div>{contentTwo}</div>}
+      {conThree && <div>{contentThree}</div>}
+      {conFour && <div>{contentFour}</div>}
+
     </div>
-    
-    {conZero && <div>{contentZero}</div>}
-
-    {/* Template for list */}
-    {conOne && <div>{contentOne}</div>}
-    {conTwo && <div>{contentTwo}</div>}
-    {conThree && <div>{contentThree}</div>}
-    {conFour && <div>{contentFour}</div>}
-
-  </div>
   );
 }
