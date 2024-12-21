@@ -1,10 +1,10 @@
-export default function ProjectsLayout({
+export default function CalculatorLayout({
     children,
   }: {
     children: React.ReactNode;
   }) {
     return (
-      <section className="project-sect">
+      <section className="w-full">
           {children}
       </section>
     );
