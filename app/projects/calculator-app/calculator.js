@@ -1,6 +1,6 @@
 // BMI Calculator (US)
 function genBmiU(userFt, userIn, userLbs) {
-  if (userFt === undefined, userIn === undefined, userLbs === undefined) {
+  if (userFt === undefined, userIn === undefined, userLbs === undefined ) {
     alert("One of more fields are missing.")
   } else {
     let convertToIn = userFt * 12
@@ -14,11 +14,15 @@ function genBmiU(userFt, userIn, userLbs) {
 
 // BMI Calculator (Metric)
 function genBmiMet(userCm, userKg) {
-  let convertToM = userCm * .1
-  let totalM = convertToM * convertToM
-  let usrBmi = (userKg/totalM)
+  if (userCm === undefined, userKg === undefined) {
+    alert("One of more fields are missing.")
+  } else {
+    let convertToM = userCm * .01
+    let totalM = convertToM * convertToM
+    let usrBmi = (userKg/totalM)
 
-  return usrBmi
+    return usrBmi.toFixed(2)
+  }
 }
 
 export default {genBmiMet, genBmiU}
