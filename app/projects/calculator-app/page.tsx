@@ -358,7 +358,7 @@ export default function CalculatorApp() {
 						Your <span className="text-cyan-400">Server's</span> Tip
 					</p>
 					<Button
-						className="w-fit"
+						className="w-fit mb-5"
 						color="default"
 						variant="ghost"
 						radius="lg"
@@ -368,10 +368,10 @@ export default function CalculatorApp() {
 					>
 						Calculator Home
 					</Button>
+					<Divider />
 				</CardHeader>
-				<Form onSubmit={onSubmit} className="pt-5">
-					<CardBody className="gap-5">
-						<Divider />
+				<Form onSubmit={onSubmit} className="">
+					<CardBody className="gap-5 flex flex-row">
 						<Input
 							label="Price"
 							labelPlacement="outside"
@@ -398,10 +398,10 @@ export default function CalculatorApp() {
 							// @ts-ignore
 							onChange={(e) => setTipAmt(e.target.valueAsNumber)}
 						/>
-						<Divider />
 					</CardBody>
 					<CardFooter className="flex flex-col">
-						<div className="flex justify-center gap-3 items-center m-auto">
+						<Divider />
+						<div className="flex justify-center gap-3 items-center m-auto pt-5">
 							<Button className="px-10"
 								color="primary"
 								type="submit"
