@@ -92,6 +92,12 @@ export default function CalculatorApp() {
 	const [uBmiSet, setUBMiSet] = useState(false);
 	const [uBmi, setUBmi] = useState();
 
+	// Metric Calc
+	const [metCm, setMetCm] = useState();
+	const [metWt, setMetWt] = useState();
+	const [metBmi, setMetBmi] = useState();
+	const [metBmiSet, setMetBmiSet] = useState(false);
+
 	const onSubmit = (e) => {
 		e.preventDefault();
 	}
@@ -145,11 +151,11 @@ export default function CalculatorApp() {
 					color="primary"
 					type="submit"
 					// @ts-ignore
-					onPress={() => {setUBmi(calculate.genBmiU(uValFt, uValIn, uValWt)); 
+					onPress={() => {setUBmi(calculate.genBmiU(uValFt, uValIn, uValWt));
 						if (uBmi === undefined) {
 							setUBMiSet(false)
 						} else if (uBmi > 0) {
-						setUBMiSet(true)}}}
+							setUBMiSet(true)}}}
 				>Calculate</Button>
 				<Button
 					color="danger"
@@ -171,7 +177,6 @@ export default function CalculatorApp() {
 		<Form
 			onSubmit={onSubmit}
 		>
-			<p className="text-sm">Height</p>
 			<div className="flex flex-row w-full gap-3">
 				<Input
 					endContent={
@@ -181,7 +186,10 @@ export default function CalculatorApp() {
 					}
 					type="number"
 					placeholder="175"
-					onChange={(e) => setUValFt(e.target.valueAsNumber)}
+					label="Height"
+					labelPlacement="outside"
+					// @ts-ignore
+					onChange={(e) => setMetCm(e.target.valueAsNumber)}
 				/>
 			</div>
 			<Input
@@ -191,27 +199,37 @@ export default function CalculatorApp() {
 					</div>
 				}
 				type="number"
-				placeholder="150" 
+				placeholder="68" 
 				label="Weight"
 				labelPlacement="outside"
-				onChange={(e) => setUValWt(e.target.valueAsNumber)}
+				// @ts-ignore
+				onChange={(e) => setMetWt(e.target.valueAsNumber)}
 			/>
 			<div className="flex justify-center gap-3 items-center py-2 m-auto">
 				<Button className="px-10"
 					color="primary"
 					type="submit"
 					// @ts-ignore
-					onPress={() => {setUBmi(calculate.genBmiU(uValFt, uValIn, uValWt))}}
+					onPress={() => {setMetBmi(calculate.genBmiMet(metCm, metWt));
+						if (metBmi === undefined) {
+							setMetBmiSet(false)
+						} else if (metBmi > 0) {
+							setMetBmiSet(true)
+					}}}
 				>Calculate</Button>
 				<Button
 					color="danger"
 					variant="faded"
 					type="reset"
 					// @ts-ignore
-					onPress={() => setUBmi()}
+					onPress={() => {setMetBmi(); setUValFt(); setUValIn(); setUValWt(); setMetBmiSet(false)}}
 				>Clear</Button>
 			</div>
-			<h1 className="jbmono">{uBmi}</h1>
+			{metBmiSet &&
+			<div className="flex flex-col items-center w-full gap-2">
+				<p>Your BMI is:</p>
+				<Chip className="jbmono text-2xl">{metBmi}</Chip>
+			</div>}
 		</Form>
 	)
 
@@ -245,10 +263,25 @@ export default function CalculatorApp() {
 						<div className="flex flex-row gap-3">
 							<Radio size="sm" 
 								value="US" 
-								onChange={() => {setUnitU(true); setUnitMet(false)}}>US</Radio>
+								onChange={() => {
+									setUnitU(true); 
+									setUnitMet(false);
+									setMetCm(undefined);
+									setMetWt(undefined);
+									setMetBmi(undefined)
+									setMetBmiSet(false);
+									}}>US</Radio>
 							<Radio size="sm" 
 								value="Metric"
-								onChange={() => {setUnitMet(true); setUnitU(false)}}>Metric</Radio>
+								onChange={() => {
+									setUnitMet(true); 
+									setUnitU(false);
+									setUValFt(undefined);
+									setUValIn(undefined);
+									setUValWt(undefined);
+									setUBmi(undefined)
+									setUBMiSet(false);
+									}}>Metric</Radio>
 						</div>
 					</RadioGroup>
 					{unitU && <div>{bodyUS}</div>}
