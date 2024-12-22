@@ -1,3 +1,5 @@
+import { user } from "@nextui-org/theme"
+
 // BMI Calculator (US)
 function genBmiU(userFt, userIn, userLbs) {
   if (userFt === undefined, userIn === undefined, userLbs === undefined ) {
@@ -25,4 +27,15 @@ function genBmiMet(userCm, userKg) {
   }
 }
 
-export default {genBmiMet, genBmiU}
+// Service Tip
+function serviceTip(userBill, userPercent) {
+  if (userBill === undefined) {
+    alert("Please enter the service amount.")
+  } else {
+    let tip = userPercent * .01
+    let serverTip = userBill * tip
+    return serverTip.toFixed(2)
+  }
+}
+
+export default {genBmiMet, genBmiU, serviceTip}
