@@ -9,6 +9,7 @@ import { Input } from "@nextui-org/input";
 import { Divider, Radio, RadioGroup } from "@nextui-org/react";
 import { Chip } from "@nextui-org/chip";
 import calculate from "./calculator.js";
+import { Ubuntu } from "next/font/google/index.js";
 
 export default function CalculatorApp() {
 	// useState t/f for opening/closing diff Calcs
@@ -16,9 +17,9 @@ export default function CalculatorApp() {
 	const [bodyApp, setBodyApp] = useState(false);
 	const [gradeApp, setGradeApp] = useState(false);
 	const [tipsApp, setTipsApp] = useState(false);
-	const [weightApp, setWeightApp] = useState(false);
+	const [massApp, setMassApp] = useState(false);
 	const [tempApp, setTempApp] = useState(false);
-	const [feetApp, setFeetApp] = useState(false);
+	const [lengthApp, setLengthApp] = useState(false);
 	const [vetApp, setVetApp] = useState(false);
 	
 	// list items (buttons)
@@ -36,15 +37,15 @@ export default function CalculatorApp() {
 			toggleItem: 3,
 		},
 		// {
-		// 	title: "Weight",
+		// 	title: "Mass",
 		// 	toggleItem: 4,
 		// },
 		// {
-		// 	title: "F° to C°",
+		// 	title: "Temperature",
 		// 	toggleItem: 5,
 		// },
 		// {
-		// 	title: "Foot to Inch",
+		// 	title: "Length",
 		// 	toggleItem: 6,
 		// },
 		// {
@@ -58,9 +59,9 @@ export default function CalculatorApp() {
 		setBodyApp(id === 1);
 		setGradeApp(id === 2);
 		setTipsApp(id === 3);
-		setWeightApp(id === 4);
+		setMassApp(id === 4);
 		setTempApp(id === 5);
-		setFeetApp(id === 6);
+		setLengthApp(id === 6);
 		setVetApp(id === 7);
 	}
 
@@ -104,15 +105,15 @@ export default function CalculatorApp() {
 	const [serverTip, setServerTip] = useState();
 	const [showTip, setShowTip] = useState(false)
 
-	const calcHome = () => {
+	function calcHome() {
 		// Calc Apps
 		setDefApp(true);
 		setBodyApp(false);
 		setGradeApp(false);
 		setTipsApp(false);
-		setWeightApp(false);
+		setMassApp(false);
 		setTempApp(false);
-		setFeetApp(false);
+		setLengthApp(false);
 		setVetApp(false);
 
 		// BMI useStates
@@ -131,15 +132,64 @@ export default function CalculatorApp() {
 
 		// GPA useStates
 
+
 		// Tips useStates
 		setBillAmt(undefined);
 		setTipAmt(undefined);
 		setServerTip(undefined);
 		setShowTip(false);
+
+		// Mass useStates
+
+
+		// Temp useStates
+
+
+		// Length useStates
+
+
+		// VA useStates
+
 	}
 
 	const onSubmit = (e: any) => {
 		e.preventDefault();
+	}
+
+	// BMI Results func for either unit or metric
+	function bmiResult() {
+		// @ts-ignore
+		if (uBmi < 18.5 || metBmi < 18.5) {
+			let result = (
+				<div className="flex flex-col items-center w-full gap-2">
+					<p>Your BMI is:</p>
+					<Chip className="jbmono text-2xl p-5" color="danger">{uBmi || metBmi}</Chip>
+				</div>)
+			return result
+		// @ts-ignore
+		} else if (uBmi > 18.4 && uBmi < 25 || metBmi > 18.5 && metBmi < 25) {
+			let result = (
+				<div className="flex flex-col items-center w-full gap-2">
+					<p>Your BMI is:</p>
+					<Chip className="jbmono text-2xl p-5" color="success">{uBmi || metBmi}</Chip>
+				</div>)
+			return result
+		// @ts-ignore
+		} else if (uBmi > 24.9 && uBmi < 30 || metBmi > 24.9 && metBmi < 30) {
+			let result = (
+				<div className="flex flex-col items-center w-full gap-2">
+					<p>Your BMI is:</p>
+					<Chip className="jbmono text-2xl p-5" color="warning">{uBmi || metBmi}</Chip>
+				</div>)
+			return result
+		} else {
+			let result = (
+				<div className="flex flex-col items-center w-full gap-2">
+					<p>Your BMI is:</p>
+					<Chip className="jbmono text-2xl p-5" color="secondary">{uBmi || metBmi}</Chip>
+				</div>)
+			return result
+		}
 	}
 
 	const bodyUS = (
@@ -207,71 +257,68 @@ export default function CalculatorApp() {
 						onPress={() => {setUBmi(); setUValFt(); setUValIn(); setUValWt(); setUBMiSet(false)}}
 					>Clear</Button>
 				</div>
-				{uBmiSet &&
-				<div className="flex flex-col items-center w-full gap-2">
-					<p>Your BMI is:</p>
-					<Chip className="jbmono text-2xl p-5">{uBmi}</Chip>
-				</div>}
+				{uBmiSet && bmiResult()}
 			</Form>
 		</>
 	)
 
 	const bodyMet = (
-		<Form onSubmit={onSubmit} className="pt-5">
-			<div className="flex flex-row w-full gap-3">
+		<>
+			<Divider />
+			<Form onSubmit={onSubmit} className="pt-5">
+				<div className="flex flex-row w-full gap-3">
+					<Input
+						endContent={
+							<div className="pointer-events-none flex items-center">
+								<span className="text-sm">cm</span>
+							</div>
+						}
+						type="number"
+						placeholder="175"
+						label="Height"
+						labelPlacement="outside"
+						// @ts-ignore
+						onChange={(e) => setMetCm(e.target.valueAsNumber)}
+					/>
+				</div>
 				<Input
 					endContent={
 						<div className="pointer-events-none flex items-center">
-							<span className="text-sm">cm</span>
+							<span className="text-sm">kg</span>
 						</div>
 					}
 					type="number"
-					placeholder="175"
-					label="Height"
+					placeholder="68" 
+					label="Weight"
 					labelPlacement="outside"
 					// @ts-ignore
-					onChange={(e) => setMetCm(e.target.valueAsNumber)}
+					onChange={(e) => setMetWt(e.target.valueAsNumber)}
+					className="pb-5"
 				/>
-			</div>
-			<Input
-				endContent={
-					<div className="pointer-events-none flex items-center">
-						<span className="text-sm">kg</span>
-					</div>
-				}
-				type="number"
-				placeholder="68" 
-				label="Weight"
-				labelPlacement="outside"
-				// @ts-ignore
-				onChange={(e) => setMetWt(e.target.valueAsNumber)}
-			/>
-			<div className="flex justify-center gap-3 items-center py-2 m-auto">
-				<Button className="px-10"
-					color="primary"
-					type="submit"
-					// @ts-ignore
-					onPress={() => {setMetBmi(calculate.genBmiMet(metCm, metWt));
-						if (metBmi === undefined) {
-							setMetBmiSet(false)
-						} else if (metBmi > 0) {
-							setMetBmiSet(true)
-					}}}
-				>Calculate</Button>
-				<Button
-					color="danger"
-					variant="faded"
-					type="reset"
-					// @ts-ignore
-					onPress={() => {setMetBmi(); setUValFt(); setUValIn(); setUValWt(); setMetBmiSet(false)}}
-				>Clear</Button>
-			</div>
-			{metBmiSet &&
-			<div className="flex flex-col items-center w-full gap-2">
-				<p>Your BMI is:</p>
-				<Chip className="jbmono text-2xl p-5">{metBmi}</Chip>
-			</div>}
-		</Form>
+				<Divider />
+				<div className="flex justify-center gap-3 items-center py-2 m-auto">
+					<Button className="px-10"
+						color="primary"
+						type="submit"
+						// @ts-ignore
+						onPress={() => {setMetBmi(calculate.genBmiMet(metCm, metWt));
+							if (metBmi === undefined) {
+								setMetBmiSet(false)
+							} else if (metBmi > 0) {
+								setMetBmiSet(true)
+						}}}
+					>Calculate</Button>
+					<Button
+						color="danger"
+						variant="faded"
+						type="reset"
+						// @ts-ignore
+						onPress={() => {setMetBmi(); setUValFt(); setUValIn(); setUValWt(); setMetBmiSet(false)}}
+					>Clear</Button>
+				</div>
+				{metBmiSet && bmiResult()}
+			</Form>
+		</>
 	)
 
 	const bodyCalc = (
@@ -434,7 +481,7 @@ export default function CalculatorApp() {
 		</div>
 	)
 
-	const weightCalc = (
+	const massCalc = (
 		<div className="m-10">
 			<div className="m-5">
 				<p className={subtitle()}>
@@ -476,7 +523,7 @@ export default function CalculatorApp() {
 		</div>
 	)
 
-	const feetCalc = (
+	const lengthCalc = (
 		<div className="m-10">
 			<div className="m-5">
 				<p className={subtitle()}>
@@ -533,9 +580,9 @@ export default function CalculatorApp() {
 			{bodyApp && <div>{bodyCalc}</div>}
 			{gradeApp && <div>{gradeCalc}</div>}
 			{tipsApp && <div>{tipsCalc}</div>}
-			{weightApp && <div>{weightCalc}</div>}
+			{massApp && <div>{massCalc}</div>}
 			{tempApp && <div>{tempCalc}</div>}
-			{feetApp && <div>{feetCalc}</div>}
+			{lengthApp && <div>{lengthCalc}</div>}
 			{vetApp && <div>{vetCalc}</div>}
 		</div>
 	)
