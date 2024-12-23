@@ -27,6 +27,8 @@ function genBmiMet(userCm, userKg) {
   }
 }
 
+// GPA Calculator
+
 // Service Tip
 function serviceTip(userBill, userPercent) {
   if (userBill === undefined) {
@@ -37,5 +39,17 @@ function serviceTip(userBill, userPercent) {
     return serverTip.toFixed(2)
   }
 }
+
+// Mass Calculator
+
+
+// Temperature Calculator
+
+
+// Lenth Calculator
+
+
+// VA Disability Calculator
+
 
 export default {genBmiMet, genBmiU, serviceTip}
