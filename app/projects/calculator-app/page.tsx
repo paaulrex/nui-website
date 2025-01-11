@@ -9,7 +9,8 @@ import { Input } from "@nextui-org/input";
 import { Divider, Radio, RadioGroup } from "@nextui-org/react";
 import { Chip } from "@nextui-org/chip";
 import calculate from "./calculator.js";
-import { Ubuntu } from "next/font/google/index.js";
+import { TbArrowBackUp } from "react-icons/tb";
+import { Select, SelectItem } from "@nextui-org/select";
 
 export default function CalculatorApp() {
 	// useState t/f for opening/closing diff Calcs
@@ -40,10 +41,10 @@ export default function CalculatorApp() {
 		// 	title: "Mass",
 		// 	toggleItem: 4,
 		// },
-		// {
-		// 	title: "Temperature",
-		// 	toggleItem: 5,
-		// },
+		{
+			title: "Temperature",
+			toggleItem: 5,
+		},
 		// {
 		// 	title: "Length",
 		// 	toggleItem: 6,
@@ -104,6 +105,13 @@ export default function CalculatorApp() {
 	const [tipAmt, setTipAmt] = useState();
 	const [serverTip, setServerTip] = useState();
 	const [showTip, setShowTip] = useState(false)
+
+	// Temp Calc
+	const [tempPl, setTempPl] = useState();
+	const [tempRes, setTempRes] = useState();
+	const [tVFrom, setTVFrom] = useState("");
+	const [tVTo, setTVTo] = useState("");
+	const [showTemp, setShowTemp] = useState(false);
 
 	function calcHome() {
 		// Calc Apps
@@ -337,7 +345,7 @@ export default function CalculatorApp() {
 						// @ts-ignore
 						onPress={calcHome}
 					>
-						Calculator Home
+						<TbArrowBackUp />Calculator Home
 					</Button>
 				</CardHeader>
 				<CardBody className="gap-1">
@@ -376,23 +384,68 @@ export default function CalculatorApp() {
 		</div>
 	)
 
+	const grades = [
+		{key: "A+", label: "A+"},
+		{key: "A", label: "A"},
+		{key: "A-", label: "A-"},
+		{key: "B+", label: "B+"},
+		{key: "B", label: "B"},
+		{key: "B-", label: "B-"},
+		{key: "C+", label: "C+"},
+		{key: "C", label: "C"},
+		{key: "C-", label: "C-"},
+		{key: "D", label: "D"},
+		{key: "F", label: "F"},
+	]
+
 	const gradeCalc = (
 		<div className="m-10">
-			<div className="m-5">
-				<p className={subtitle()}>
-					Grade <span className="text-cyan-400">Point</span> Average
-				</p>
-			</div>
 			<Card className="gap-1">
-				<Button
-					color="default"
-					variant="ghost"
-					radius="lg"
-					size="sm"
-					// @ts-ignore
-					onPress={calcHome}>
-						Calculator Home
-				</Button>
+				<CardHeader className="flex flex-col gap-2 w-full">
+					<p className="text-3xl jbmono">
+						Grade <span className="text-cyan-400">Point</span> Average
+					</p>
+					<Button
+						className="mb-3"
+						color="default"
+						variant="ghost"
+						radius="lg"
+						size="sm"
+						// @ts-ignore
+						onPress={calcHome}>
+							<TbArrowBackUp />Calculator Home
+					</Button>
+					<Divider />
+				</CardHeader>
+				<CardBody className="grid grid-cols-2 gap-3">
+					<Select items={grades}
+					 	label="Grades"
+					 	placeholder="Select your grade"
+						onChange={() => {}}
+					>
+						{(grade) => <SelectItem>{grade.label}</SelectItem>}
+					</Select>
+					<Input
+						label="Credit"
+						placeholder="4"
+					/>
+
+					<Select items={grades}
+					 	label="Grades"
+					 	placeholder="Select your grade"
+					>
+						{(grade) => <SelectItem>{grade.label}</SelectItem>}
+					</Select>
+					<Input
+						label="Credit"
+						placeholder="4"
+					/>
+				</CardBody>
+				<CardFooter>
+					<Button
+						onPress={()=>{console.log()}}>Generate</Button>
+				</CardFooter>
+
 			</Card>
 		</div>	
 	)
@@ -413,7 +466,7 @@ export default function CalculatorApp() {
 						// @ts-ignore
 						onPress={calcHome}
 					>
-						Calculator Home
+						<TbArrowBackUp />Calculator Home
 					</Button>
 					<Divider />
 				</CardHeader>
@@ -496,29 +549,105 @@ export default function CalculatorApp() {
 					size="sm"
 					// @ts-ignore
 					onPress={calcHome}>
-						Calculator Home
+						<TbArrowBackUp />Calculator Home
 				</Button>
 			</Card>
 		</div>
 	)
 
+	const tempVals = [
+		{key: "F", label: "°F"},
+		{key: "C", label: "°C"},
+		{key: "K", label: "°K"}
+	]
+
 	const tempCalc = (
 		<div className="m-10">
-			<div className="m-5">
-				<p className={subtitle()}>
-					Farenheit-<span className="text-cyan-400">to</span>-Celsius
-				</p>
-			</div>
 			<Card className="gap-1">
-				<Button
-					color="default"
-					variant="ghost"
-					radius="lg"
-					size="sm"
-					// @ts-ignore
-					onPress={calcHome}>
-						Calculator Home
-				</Button>
+				<CardHeader className="justify-center flex flex-col gap-2">
+					<p className="text-3xl jbmono">
+						Temperature <span className="text-cyan-400">Converter</span>
+					</p>
+					<Button
+						className="w-fit mb-5"
+						color="default"
+						variant="ghost"
+						radius="lg"
+						size="md"
+						// @ts-ignore
+						onPress={calcHome}
+					>
+						<TbArrowBackUp />Calculator Home
+					</Button>
+					<Divider />
+				</CardHeader>
+				<CardBody className="flex flex-col gap-5">
+					<Input
+						className="px-20"
+						radius="full"
+						type="number"
+						size="lg"
+						label="Enter number: "
+						labelPlacement="outside"
+						placeholder="32"
+						// @ts-ignore
+						onChange={(e) => {setTempPl(e.target.valueAsNumber)}}
+						endContent={
+							<div className="pointer-events-none flex items-center">
+              	<span className="text-default-400 text-small"></span>
+            	</div>
+						}
+					/>
+					<div className="flex flex-row justify-evenly gap-3">
+						<Select
+							items={tempVals}
+							label="From"
+							labelPlacement="outside"
+							value={tVFrom}
+							placeholder="°F"
+							onChange={(e) => {setTVFrom(e.target.value)}}>
+								{(tempFrom) => <SelectItem>{tempFrom.label}</SelectItem>}
+						</Select>
+						<Select
+							items={tempVals}
+							label="To"
+							labelPlacement="outside"
+							value={tVTo}
+							placeholder="°C"
+							onChange={(e) => {setTVTo(e.target.value)}}>
+								{(tempTo) => <SelectItem>{tempTo.label}</SelectItem>}
+						</Select>
+						</div>
+					<Divider />
+					<div className="flex justify-center gap-3">
+						<Button
+							color="primary"
+							// @ts-ignore
+							onPress={() => {setTempRes(calculate.tempConv(tempPl, tVFrom, tVTo));
+								if (tempPl === undefined) {
+									setShowTemp(false)
+								} else {
+									setShowTemp(true)
+								}
+							}}
+						>Calculate</Button>
+						<Button
+							color="danger"
+							variant="faded"
+							// @ts-ignore
+							onPress={() => {setTempRes(); setTempPl(); setTempPl(); setShowTemp(false)}}
+						>Reset</Button>
+					</div>
+					<Divider />
+				</CardBody>
+				<CardFooter className="pb-5 mb-10">
+					{showTemp &&
+						<div className="w-full gap-3 pt-5">
+							<p>Your Server's Tip is:</p>
+							<Chip className="jbmono text-2xl p-5 text-wrap" color="success">{tempRes}</Chip>
+						</div>
+					}
+				</CardFooter>
 			</Card>
 		</div>
 	)
@@ -538,7 +667,7 @@ export default function CalculatorApp() {
 					size="sm"
 					// @ts-ignore
 					onPress={calcHome}>
-						Calculator Home
+						<TbArrowBackUp />Calculator Home
 				</Button>
 			</Card>
 		</div>
@@ -559,7 +688,7 @@ export default function CalculatorApp() {
 					size="sm"
 					// @ts-ignore
 					onPress={calcHome}>
-						Calculator Home
+						<TbArrowBackUp />Calculator Home
 				</Button>
 			</Card>
 		</div>
@@ -569,7 +698,8 @@ export default function CalculatorApp() {
 		<div className="roboto">
 			<div>
 				<span className={`${title()} jbmono`}>All-in-One </span>
-				<span className={`${title({ color: "cyan" })} jbmono`}>Calculator <br /></span>
+				<span className={`${title({ color: "cyan" })} jbmono`}>Calculator</span>
+				<br />
 				<span className={`${title()} jbmono`}>App</span>
 			</div>
 
