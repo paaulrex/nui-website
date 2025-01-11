@@ -29,6 +29,7 @@ function genBmiMet(userCm, userKg) {
 
 // GPA Calculator
 
+
 // Service Tip
 function serviceTip(userBill, userPercent) {
   if (userBill === undefined) {
@@ -44,12 +45,39 @@ function serviceTip(userBill, userPercent) {
 
 
 // Temperature Calculator
+function tempConv(usrEnter, usrFrom, usrTo) {
+  if (usrEnter === undefined) {
+    alert("Please enter a number you want to convert")
+  } else if (usrFrom === "F" && usrTo === "C") {
+    let fcels = ((usrEnter - 32) * (5/9)).toFixed(2).replace(/\.00$/, '')
+    return fcels
+  } else if (usrFrom === "F" && usrTo === "K") {
+    let fkel = ((usrEnter - 32) * (5/9) + 273.15).toFixed(2).replace(/\.00$/, '')
+    return fkel
+  } else if (usrFrom === "C" && usrTo === "F") {
+    let cfar = ((usrEnter * (9/5)) + 32).toFixed(2).replace(/\.00$/, '')
+    return cfar
+  } else if (usrFrom === "C" && usrTo === "K") {
+    let ckel = (usrEnter + 273.15).toFixed(2).replace(/\.00$/, '')
+    return ckel
+  } else if (usrFrom === "K" && usrTo === "F") {
+    let kfar = ((usrEnter - 273.15) * (9/5) +32).toFixed(2).replace(/\.00$/, '')
+    return kfar
+  } else if (usrFrom === "K" && usrTo === "C") {
+    let kcel = (usrEnter - 273.15).toFixed(2).replace(/\.00$/, '')
+    return kcel
+  } else {
+    return usrEnter
+  }
+}
 
 
 // Lenth Calculator
-
+function lenCalc() {
+  
+}
 
 // VA Disability Calculator
 
 
-export default {genBmiMet, genBmiU, serviceTip}
+export default {genBmiMet, genBmiU, serviceTip, tempConv}
