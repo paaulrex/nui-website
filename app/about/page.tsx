@@ -24,7 +24,7 @@ export default function AboutPage() {
           a lot since then about HTML:5, CSS and other CSS libraries, and JavaScript and the 
           different JS frameworks.
           </p>
-          <p className="pt-4">Currently, I'm enrolled in Penn State for my Graduate degree in Software Engineering.</p>
+          <p className="pt-4">Currently, I'm enrolled in Penn State for my Graduate degree: <br /> Master's in Software Engineering.</p>
           <Tooltip 
             showArrow 
             content="I am currently working on multiple projects, it might take a while to update this page."
