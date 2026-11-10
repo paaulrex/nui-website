@@ -2,15 +2,15 @@
 
 import { title, subtitle } from "@/components/primitives";
 import { useState } from "react";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-import { Button } from "@nextui-org/button";
-import { Form } from "@nextui-org/form"
-import { Input } from "@nextui-org/input";
-import { Divider, Radio, RadioGroup } from "@nextui-org/react";
-import { Chip } from "@nextui-org/chip";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
+import { Button } from "@heroui/button";
+import { Form } from "@heroui/form"
+import { Input } from "@heroui/input";
+import { Divider, Radio, RadioGroup } from "@heroui/react";
+import { Chip } from "@heroui/chip";
 import calculate from "./calculator.js";
 import { TbArrowBackUp } from "react-icons/tb";
-import { Select, SelectItem } from "@nextui-org/select";
+import { Select, SelectItem } from "@heroui/select";
 
 export default function CalculatorApp() {
 	// useState t/f for opening/closing diff Calcs
@@ -87,14 +87,14 @@ export default function CalculatorApp() {
 	const [unitMet, setUnitMet] = useState(false);
 	const [bodySel, setBodySel] = useState("US");
 
-	// US Calc
+	// US-BMI Calc
 	const [uValFt, setUValFt] = useState();
 	const [uValIn, setUValIn] = useState();
 	const [uValWt, setUValWt] = useState();
 	const [uBmiSet, setUBMiSet] = useState(false);
 	const [uBmi, setUBmi] = useState();
 
-	// Metric Calc
+	// Metric-BMI Calc
 	const [metCm, setMetCm] = useState();
 	const [metWt, setMetWt] = useState();
 	const [metBmi, setMetBmi] = useState();
@@ -113,6 +113,8 @@ export default function CalculatorApp() {
 	const [tVTo, setTVTo] = useState("");
 	const [showTemp, setShowTemp] = useState(false);
 
+	// Self-explanatory but if you don't understand, it's just
+	// to go back "Home" or the main selection for calculators
 	function calcHome() {
 		// Calc Apps
 		setDefApp(true);
@@ -200,6 +202,7 @@ export default function CalculatorApp() {
 		}
 	}
 
+	// For calculating US measurement
 	const bodyUS = (
 		<>
 			<Divider />
@@ -270,6 +273,7 @@ export default function CalculatorApp() {
 		</>
 	)
 
+	// For calculating metric measurements
 	const bodyMet = (
 		<>
 			<Divider />
@@ -329,6 +333,7 @@ export default function CalculatorApp() {
 		</>
 	)
 
+	// Main/Parent code for BMI calc
 	const bodyCalc = (
 		<div className="m-10">
 			<Card className="gap-1 py-5">
@@ -384,18 +389,20 @@ export default function CalculatorApp() {
 		</div>
 	)
 
+	// Keys needed for gpa calc function
 	const grades = [
-		{key: "A+", label: "A+"},
-		{key: "A", label: "A"},
-		{key: "A-", label: "A-"},
-		{key: "B+", label: "B+"},
-		{key: "B", label: "B"},
-		{key: "B-", label: "B-"},
-		{key: "C+", label: "C+"},
-		{key: "C", label: "C"},
-		{key: "C-", label: "C-"},
-		{key: "D", label: "D"},
-		{key: "F", label: "F"},
+		{key: "A1", label: "A+"},
+		{key: "A2", label: "A"},
+		{key: "A3", label: "A-"},
+		{key: "B1", label: "B+"},
+		{key: "B2", label: "B"},
+		{key: "B3", label: "B-"},
+		{key: "C1", label: "C+"},
+		{key: "C2", label: "C"},
+		{key: "C3", label: "C-"},
+		{key: "D1", label: "D+"},
+		{key: "D2", label: "D"},
+		{key: "D3", label: "D-"}
 	]
 
 	const gradeCalc = (
@@ -535,26 +542,11 @@ export default function CalculatorApp() {
 	)
 
 	const massCalc = (
-		<div className="m-10">
-			<div className="m-5">
-				<p className={subtitle()}>
-					Pounds-<span className="text-cyan-400">to</span>-Kilogram
-				</p>
-			</div>
-			<Card className="gap-1">
-				<Button
-					color="default"
-					variant="ghost"
-					radius="lg"
-					size="sm"
-					// @ts-ignore
-					onPress={calcHome}>
-						<TbArrowBackUp />Calculator Home
-				</Button>
-			</Card>
-		</div>
+		<>
+		</>
 	)
 
+	// Key needed for function to work properly
 	const tempVals = [
 		{key: "F", label: "°F"},
 		{key: "C", label: "°C"},
@@ -653,45 +645,13 @@ export default function CalculatorApp() {
 	)
 
 	const lengthCalc = (
-		<div className="m-10">
-			<div className="m-5">
-				<p className={subtitle()}>
-					Feet-<span className="text-cyan-400">to</span>-Inches
-				</p>
-			</div>
-			<Card className="gap-1">
-				<Button
-					color="default"
-					variant="ghost"
-					radius="lg"
-					size="sm"
-					// @ts-ignore
-					onPress={calcHome}>
-						<TbArrowBackUp />Calculator Home
-				</Button>
-			</Card>
-		</div>
+		<>
+		</>
 	)
 
 	const vetCalc = (
-		<div className="m-10">
-			<div className="m-5">
-				<p className={subtitle()}>
-					VA <span className="text-cyan-400">Disability</span> Calculator
-				</p>
-			</div>
-			<Card className="gap-1">
-				<Button
-					color="default"
-					variant="ghost"
-					radius="lg"
-					size="sm"
-					// @ts-ignore
-					onPress={calcHome}>
-						<TbArrowBackUp />Calculator Home
-				</Button>
-			</Card>
-		</div>
+		<>
+		</>
 	)
 	
 	return (

@@ -1,13 +1,13 @@
 'use client';
 import { title } from "@/components/primitives";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import "@/styles/pg.css"
 import generatePassword from "./pg.js"
-import { Slider } from "@nextui-org/slider"
-import { Checkbox } from "@nextui-org/checkbox";
-import { Divider } from "@nextui-org/divider"
+import { Slider } from "@heroui/slider"
+import { Checkbox } from "@heroui/checkbox";
+import { Divider } from "@heroui/divider"
 import { useState } from "react";
-import { Snippet } from "@nextui-org/snippet";
+import { Snippet } from "@heroui/snippet";
 
 export default function PasswordGeneratorPage() {
   const [value, setValue] = useState(18);

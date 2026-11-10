@@ -2,13 +2,13 @@
 
 import React from "react";
 import { title } from "@/components/primitives";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
+import { Card, CardBody, CardFooter, CardHeader } from "@heroui/card";
+import { Input } from "@heroui/input";
+import { Button } from "@heroui/button";
 import { onValue, push, ref, remove, set  } from "firebase/database";
 import db from "./firebaseConfig.js";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/modal"
-import { useDisclosure } from "@nextui-org/react"
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@heroui/modal"
+import { useDisclosure } from "@heroui/react"
 import Image from "next/image";
 import animePic from "@/components/images/list-anime.png";
 import tvPic from "@/components/images/list-tv.png";

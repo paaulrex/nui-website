@@ -1,11 +1,11 @@
 import { title, subtitle } from "@/components/primitives";
-import { Divider } from "@nextui-org/divider";
-import { Link } from "@nextui-org/link";
-import { button as buttonStyles } from "@nextui-org/theme";
+import { Divider } from "@heroui/divider";
+import { Link } from "@heroui/link";
+import { button as buttonStyles } from "@heroui/theme";
 import { AboutMeIcon, GithubIcon, LinkedInIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
-import { Button } from "@nextui-org/button";
-import { Tooltip } from "@nextui-org/tooltip";
+import { Button } from "@heroui/button";
+import { Tooltip } from "@heroui/tooltip";
 
 export default function AboutPage() {
   return (

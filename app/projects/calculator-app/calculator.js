@@ -1,5 +1,3 @@
-import { user } from "@nextui-org/theme"
-
 // BMI Calculator (US)
 function genBmiU(userFt, userIn, userLbs) {
   if (userFt === undefined, userIn === undefined, userLbs === undefined ) {
@@ -42,6 +40,33 @@ function serviceTip(userBill, userPercent) {
 }
 
 // Mass Calculator
+function massCalc(usrEnter, usrFrom, usrTo) {
+  if (usrEnter === undefined) {
+    alert("Please enter a number you want to convert")
+  } else if (usrFrom === "Gt") {
+    if (usrTo === "Mt") {
+      return (usrEnter / 1e+3)
+    } else if (usrTo === "t") {
+      return (usrEnter / 1e+6)
+    } else if (usrTo === "kg") {
+      return (usrEnter / 1e+12)
+    } else if (usrTo === "g") {
+      return (usrEnter / 1e+15)
+    } else if (usrTo === "mg") {
+      return (usrEnter / 1e+18)
+    } else if (usrTo === "ug") {
+      return (usrEnter / 1e+21)
+    } else if (usrTo === "ng") {
+      return (usrEnter / 1e+24)
+    } else if (usrTo === "pg") {
+      return (usrEnter / 1e+27)
+      // end of metric to metric conv
+    } else if (usrTo === "lbs") {
+      
+    }
+  }
+
+}
 
 
 // Temperature Calculator
@@ -78,6 +103,9 @@ function lenCalc() {
 }
 
 // VA Disability Calculator
+function vaCalc() {
+
+}
 
 
-export default {genBmiMet, genBmiU, serviceTip, tempConv}
+export default {genBmiMet, genBmiU, serviceTip, massCalc, tempConv, lenCalc, vaCalc}

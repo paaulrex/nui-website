@@ -1,12 +1,12 @@
 'use client'
 import { title } from "@/components/primitives";
-import { Divider } from "@nextui-org/divider";
-import { Card, CardBody } from "@nextui-org/card";
+import { Divider } from "@heroui/divider";
+import { Card, CardBody } from "@heroui/card";
 import Image from "next/image";
 import Link from "next/link";
 import passGenPic from "../../components/images/pg.png"
 import toDoListPic from "../../components/images/tdl.png"
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 
 export default function ProjectsPage(){
   return (
